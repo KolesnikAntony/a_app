@@ -1,0 +1,46 @@
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  font-family: sans-serif;
+}
+
+div,
+p,
+span,
+button {
+  box-sizing: border-box;
+}
+
+.icon {
+  display: inline-block;
+  text-transform: none;
+  letter-spacing: normal;
+  text-rendering: auto;
+  word-wrap: normal;
+  white-space: nowrap;
+  overflow: hidden;
+  direction: ltr;
+  font-variant: normal;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  // font-family: k-icon-font !important;
+  // font-style: normal;
+  // font-weight: normal !important;
+  // -webkit-font-feature-settings: 'liga';
+}
+
+@font-face {
+  font-family: "SansPro";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./assets/fonts/SourceSansPro-Regular.ttf");
+}
+@font-face {
+  font-family: "SansPro";
+  font-style: normal;
+  font-weight: 600;
+  src: url("./assets/fonts/SourceSansPro-SemiBold.ttf");
+}
