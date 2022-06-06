@@ -1,8 +1,8 @@
 import React, { useCallback, useState } from 'react';
 import { Box, Button, Typography } from '@mui/material';
-import avatar from '../../../../assets/images/svg/avatar.svg?url';
 import MainPopover from '../../main-popover/main-popover';
 import PropTypes from 'prop-types';
+import avatar from '../../../../assets/images/svg/avatar.svg?url';
 
 const useMainItemStyle = (color) => ({
   item: {
@@ -40,7 +40,7 @@ const useMainItemStyle = (color) => ({
   },
 });
 
-const MainItem = ({ id }) => {
+const MainItem = ({ id, refund, insurance, debtor, reason }) => {
   const sx = useMainItemStyle('#D2FACC');
 
   const [position, setPosition] = useState({
@@ -63,10 +63,12 @@ const MainItem = ({ id }) => {
         <Box component="img" src={avatar} alt={'Logo'} sx={sx.img} />
         <Box>
           <Box sx={sx.info}>
-            <Typography sx={sx.label}>TP</Typography>
-            <Typography sx={sx.title}>Assura</Typography>
+            <Typography sx={sx.label}>{refund}</Typography>
+            <Typography sx={sx.title}>{insurance}</Typography>
           </Box>
-          <Typography sx={sx.subtitle}>LAMal · Maladie · Maladie 2022</Typography>
+          <Typography sx={sx.subtitle}>
+            {debtor} - {reason}
+          </Typography>
         </Box>
       </Button>
       <MainPopover elementId={id} {...position} onClose={handleClose} />
@@ -75,7 +77,11 @@ const MainItem = ({ id }) => {
 };
 
 MainItem.propTypes = {
-  id: PropTypes.string,
+  id: PropTypes.number.isRequired,
+  refund: PropTypes.string.isRequired,
+  insurance: PropTypes.string.isRequired,
+  debtor: PropTypes.string.isRequired,
+  reason: PropTypes.string.isRequired,
 };
 
 export default MainItem;

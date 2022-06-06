@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Box, Button, Divider, Popover } from '@mui/material';
 import EditIcon from '../../../assets/images/svg/edit.svg';
 import CopyIcon from '../../../assets/images/svg/copy.svg';
 import RemoveIcon from '../../../assets/images/svg/remove.svg';
 import PropTypes from 'prop-types';
-import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { removeCoverage } from '../../../redux/general-slice';
 
 const sx = {
   box: {
@@ -24,10 +25,20 @@ const sx = {
 };
 
 const MainPopover = ({ isOpen, onClose, elementId, top, left }) => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
+  const dispatch = useDispatch();
   const handleNavigate = (type) => {
-    return () => navigate(type, { state: elementId });
+    return () => alert('Here is gonna be route' + type);
   };
+
+  const handleRemove = useCallback(
+    (elementId) => {
+      return () => {
+        dispatch(removeCoverage(elementId));
+      };
+    },
+    [dispatch]
+  );
 
   return (
     <Popover
@@ -51,7 +62,7 @@ const MainPopover = ({ isOpen, onClose, elementId, top, left }) => {
           Duplicate
         </Button>
         <Divider sx={sx.divider} />
-        <Button sx={sx.btn} startIcon={<RemoveIcon />} onClick={() => console.log(elementId)}>
+        <Button sx={sx.btn} startIcon={<RemoveIcon />} onClick={handleRemove(elementId)}>
           Remove
         </Button>
       </Box>
@@ -60,9 +71,9 @@ const MainPopover = ({ isOpen, onClose, elementId, top, left }) => {
 };
 
 MainPopover.propTypes = {
-  isOpen: PropTypes.bool,
-  onClose: PropTypes.func,
-  elementId: PropTypes.string,
+  isOpen: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+  elementId: PropTypes.number.isRequired,
   top: PropTypes.number,
   left: PropTypes.number,
 };

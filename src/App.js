@@ -17,7 +17,6 @@ const useAppStyle = () => ({
 
 const App = () => {
   const sx = useAppStyle();
-
   return (
     <Box sx={sx.app}>
       <Routes>

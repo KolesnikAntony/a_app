@@ -36,7 +36,7 @@ export const BootstrapInput = styled(InputBase)(({ theme }) => ({
     },
     '&[type="date"]::-webkit-calendar-picker-indicator': {
       position: 'absolute',
-      left: '-10px',
+      left: '14px',
       top: '10px',
       opacity: 1,
       display: 'block',

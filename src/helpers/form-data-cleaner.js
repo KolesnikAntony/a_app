@@ -5,5 +5,6 @@ export const cleanFormData = (values) => {
       delete obj[propName];
     }
   }
+  obj.id = new Date().getTime();
   return obj;
 };
